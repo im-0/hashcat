@@ -10,13 +10,11 @@
 #include "inc_types.h"
 #include "inc_platform.cl"
 #include "inc_common.cl"
-#include "inc_rp.h"
-#include "inc_rp.cl"
 #include "inc_scalar.cl"
 #include "inc_hash_blake2b.cl"
 #endif
 
-KERNEL_FQ void m00600_mxx (KERN_ATTR_RULES ())
+KERNEL_FQ void m00601_mxx (KERN_ATTR_BASIC ())
 {
   /**
    * base
@@ -30,7 +28,11 @@ KERNEL_FQ void m00600_mxx (KERN_ATTR_RULES ())
    * base
    */
 
-  COPY_PW (pws[gid]);
+  blake2b_ctx_t ctx0;
+
+  blake2b_init (&ctx0, 32);
+
+  blake2b_update_global (&ctx0, pws[gid].i, pws[gid].pw_len);
 
   /**
    * loop
@@ -38,15 +40,11 @@ KERNEL_FQ void m00600_mxx (KERN_ATTR_RULES ())
 
   for (u32 il_pos = 0; il_pos < il_cnt; il_pos++)
   {
-    pw_t tmp = PASTE_PW;
+    blake2b_ctx_t ctx = ctx0;
 
-    tmp.pw_len = apply_rules (rules_buf[il_pos].cmds, tmp.i, tmp.pw_len);
+    blake2b_update_global (&ctx, combs_buf[il_pos].i, combs_buf[il_pos].pw_len);
 
-    blake2b_ctx_t ctx;
-
-    blake2b_init   (&ctx, 64);
-    blake2b_update (&ctx, tmp.i, tmp.pw_len);
-    blake2b_final  (&ctx);
+    blake2b_final (&ctx);
 
     const u32 r0 = h32_from_64_S (ctx.h[0]);
     const u32 r1 = l32_from_64_S (ctx.h[0]);
@@ -57,7 +55,7 @@ KERNEL_FQ void m00600_mxx (KERN_ATTR_RULES ())
   }
 }
 
-KERNEL_FQ void m00600_sxx (KERN_ATTR_RULES ())
+KERNEL_FQ void m00601_sxx (KERN_ATTR_BASIC ())
 {
   /**
    * base
@@ -83,7 +81,11 @@ KERNEL_FQ void m00600_sxx (KERN_ATTR_RULES ())
    * base
    */
 
-  COPY_PW (pws[gid]);
+  blake2b_ctx_t ctx0;
+
+  blake2b_init (&ctx0, 32);
+
+  blake2b_update_global (&ctx0, pws[gid].i, pws[gid].pw_len);
 
   /**
    * loop
@@ -91,15 +93,11 @@ KERNEL_FQ void m00600_sxx (KERN_ATTR_RULES ())
 
   for (u32 il_pos = 0; il_pos < il_cnt; il_pos++)
   {
-    pw_t tmp = PASTE_PW;
+    blake2b_ctx_t ctx = ctx0;
 
-    tmp.pw_len = apply_rules (rules_buf[il_pos].cmds, tmp.i, tmp.pw_len);
+    blake2b_update_global (&ctx, combs_buf[il_pos].i, combs_buf[il_pos].pw_len);
 
-    blake2b_ctx_t ctx;
-
-    blake2b_init   (&ctx, 64);
-    blake2b_update (&ctx, tmp.i, tmp.pw_len);
-    blake2b_final  (&ctx);
+    blake2b_final (&ctx);
 
     const u32 r0 = h32_from_64_S (ctx.h[0]);
     const u32 r1 = l32_from_64_S (ctx.h[0]);

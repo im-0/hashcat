@@ -57,6 +57,7 @@ NVIDIA GPUs require "NVIDIA Driver" (440.64 or later) and "CUDA Toolkit" (9.0 or
 - SHA3-384
 - SHA3-512
 - RIPEMD-160
+- BLAKE2b-256
 - BLAKE2b-512
 - GOST R 34.11-2012 (Streebog) 256-bit, big-endian
 - GOST R 34.11-2012 (Streebog) 512-bit, big-endian

@@ -8,7 +8,7 @@
 use strict;
 use warnings;
 
-use Crypt::Digest::BLAKE2b_512 qw (blake2b_512_hex);
+use Crypt::Digest::BLAKE2b_256 qw (blake2b_256_hex);
 
 sub module_constraints { [[0, 256], [-1, -1], [0, 64], [-1, -1], [-1, -1]] }
 
@@ -16,9 +16,9 @@ sub module_generate_hash
 {
   my $word = shift;
 
-  my $digest = blake2b_512_hex ($word);
+  my $digest = blake2b_256_hex ($word);
 
-  my $hash = sprintf ("\$BLAKE2\$" . lc ($digest));
+  my $hash = sprintf ("\$BLAKE2b-256\$" . lc ($digest));
 
   return $hash;
 }

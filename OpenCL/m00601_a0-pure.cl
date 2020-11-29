@@ -16,7 +16,7 @@
 #include "inc_hash_blake2b.cl"
 #endif
 
-KERNEL_FQ void m00600_mxx (KERN_ATTR_RULES ())
+KERNEL_FQ void m00601_mxx (KERN_ATTR_RULES ())
 {
   /**
    * base
@@ -44,7 +44,7 @@ KERNEL_FQ void m00600_mxx (KERN_ATTR_RULES ())
 
     blake2b_ctx_t ctx;
 
-    blake2b_init   (&ctx, 64);
+    blake2b_init   (&ctx, 32);
     blake2b_update (&ctx, tmp.i, tmp.pw_len);
     blake2b_final  (&ctx);
 
@@ -57,7 +57,7 @@ KERNEL_FQ void m00600_mxx (KERN_ATTR_RULES ())
   }
 }
 
-KERNEL_FQ void m00600_sxx (KERN_ATTR_RULES ())
+KERNEL_FQ void m00601_sxx (KERN_ATTR_RULES ())
 {
   /**
    * base
@@ -97,7 +97,7 @@ KERNEL_FQ void m00600_sxx (KERN_ATTR_RULES ())
 
     blake2b_ctx_t ctx;
 
-    blake2b_init   (&ctx, 64);
+    blake2b_init   (&ctx, 32);
     blake2b_update (&ctx, tmp.i, tmp.pw_len);
     blake2b_final  (&ctx);
 

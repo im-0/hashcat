@@ -30,7 +30,7 @@ KERNEL_FQ void m00600_mxx (KERN_ATTR_BASIC ())
 
   blake2b_ctx_t ctx0;
 
-  blake2b_init (&ctx0);
+  blake2b_init (&ctx0, 64);
 
   blake2b_update_global (&ctx0, pws[gid].i, pws[gid].pw_len);
 
@@ -83,7 +83,7 @@ KERNEL_FQ void m00600_sxx (KERN_ATTR_BASIC ())
 
   blake2b_ctx_t ctx0;
 
-  blake2b_init (&ctx0);
+  blake2b_init (&ctx0, 64);
 
   blake2b_update_global (&ctx0, pws[gid].i, pws[gid].pw_len);
 

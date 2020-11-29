@@ -9,6 +9,7 @@
 - Added hash-mode: Apple iWork
 - Added hash-mode: AxCrypt 2 AES-128
 - Added hash-mode: AxCrypt 2 AES-256
+- Added hash-mode: BLAKE2b-256
 - Added hash-mode: PKCS#8 Private Keys
 - Added hash-mode: RAR3-p (Compressed)
 - Added hash-mode: RAR3-p (Uncompressed)

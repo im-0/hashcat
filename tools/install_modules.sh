@@ -19,6 +19,8 @@ cpan install Authen::Passphrase::LANManager \
              Crypt::CBC                     \
              Crypt::DES                     \
              Crypt::DES_EDE3                \
+             Crypt::Digest::BLAKE2b_256     \
+             Crypt::Digest::BLAKE2b_512     \
              Crypt::Digest::RIPEMD160       \
              Crypt::Digest::Whirlpool       \
              Crypt::ECB                     \
@@ -38,7 +40,6 @@ cpan install Authen::Passphrase::LANManager \
              Crypt::Twofish                 \
              Crypt::UnixCrypt_XS            \
              Data::Types                    \
-             Digest::BLAKE2                 \
              Digest::CMAC                   \
              Digest::CRC                    \
              Digest::GOST                   \

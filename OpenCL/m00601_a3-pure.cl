@@ -14,7 +14,7 @@
 #include "inc_hash_blake2b.cl"
 #endif
 
-KERNEL_FQ void m00600_mxx (KERN_ATTR_VECTOR ())
+KERNEL_FQ void m00601_mxx (KERN_ATTR_VECTOR ())
 {
   /**
    * modifier
@@ -53,7 +53,7 @@ KERNEL_FQ void m00600_mxx (KERN_ATTR_VECTOR ())
 
     blake2b_ctx_vector_t ctx;
 
-    blake2b_init_vector   (&ctx, 64);
+    blake2b_init_vector   (&ctx, 32);
     blake2b_update_vector (&ctx, w, pw_len);
     blake2b_final_vector  (&ctx);
 
@@ -66,7 +66,7 @@ KERNEL_FQ void m00600_mxx (KERN_ATTR_VECTOR ())
   }
 }
 
-KERNEL_FQ void m00600_sxx (KERN_ATTR_VECTOR ())
+KERNEL_FQ void m00601_sxx (KERN_ATTR_VECTOR ())
 {
   /**
    * modifier
@@ -117,7 +117,7 @@ KERNEL_FQ void m00600_sxx (KERN_ATTR_VECTOR ())
 
     blake2b_ctx_vector_t ctx;
 
-    blake2b_init_vector   (&ctx, 64);
+    blake2b_init_vector   (&ctx, 32);
     blake2b_update_vector (&ctx, w, pw_len);
     blake2b_final_vector  (&ctx);
 

@@ -76,13 +76,13 @@ typedef struct blake2b_ctx_vector
 } blake2b_ctx_vector_t;
 
 DECLSPEC void blake2b_transform (u64 *h, const u64 *m, const u32 len, const u64 f0);
-DECLSPEC void blake2b_init (blake2b_ctx_t *ctx);
+DECLSPEC void blake2b_init (blake2b_ctx_t *ctx, const u8 dgst_len);
 DECLSPEC void blake2b_update (blake2b_ctx_t *ctx, const u32 *w, const u32 len);
 DECLSPEC void blake2b_update_global (blake2b_ctx_t *ctx, GLOBAL_AS const u32 *w, const u32 len);
 DECLSPEC void blake2b_final (blake2b_ctx_t *ctx);
 
 DECLSPEC void blake2b_transform_vector (u64x *h, const u64x *m, const u32x len, const u64 f0);
-DECLSPEC void blake2b_init_vector (blake2b_ctx_vector_t *ctx);
+DECLSPEC void blake2b_init_vector (blake2b_ctx_vector_t *ctx, const u8 dgst_len);
 DECLSPEC void blake2b_update_vector (blake2b_ctx_vector_t *ctx, const u32x *w, const u32 len);
 DECLSPEC void blake2b_final_vector (blake2b_ctx_vector_t *ctx);
 

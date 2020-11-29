@@ -55,9 +55,9 @@ DECLSPEC void blake2b_transform (u64 *h, const u64 *m, const u32 len, const u64 
   h[7] = h[7] ^ v[7] ^ v[15];
 }
 
-DECLSPEC void blake2b_init (blake2b_ctx_t *ctx)
+DECLSPEC void blake2b_init (blake2b_ctx_t *ctx, const u8 dgst_len)
 {
-  ctx->h[0] = BLAKE2B_IV_00 ^ 0x01010040; // default output length: 0x40 = 64 bytes
+  ctx->h[0] = BLAKE2B_IV_00 ^ (0x01010000 | dgst_len);
   ctx->h[1] = BLAKE2B_IV_01;
   ctx->h[2] = BLAKE2B_IV_02;
   ctx->h[3] = BLAKE2B_IV_03;
@@ -426,9 +426,9 @@ DECLSPEC void blake2b_transform_vector (u64x *h, const u64x *m, const u32x len, 
   h[7] = h[7] ^ v[7] ^ v[15];
 }
 
-DECLSPEC void blake2b_init_vector (blake2b_ctx_vector_t *ctx)
+DECLSPEC void blake2b_init_vector (blake2b_ctx_vector_t *ctx, const u8 dgst_len)
 {
-  ctx->h[0] = BLAKE2B_IV_00 ^ 0x01010040; // default output length: 0x40 = 64 bytes
+  ctx->h[0] = BLAKE2B_IV_00 ^ (0x01010000 | dgst_len);
   ctx->h[1] = BLAKE2B_IV_01;
   ctx->h[2] = BLAKE2B_IV_02;
   ctx->h[3] = BLAKE2B_IV_03;
